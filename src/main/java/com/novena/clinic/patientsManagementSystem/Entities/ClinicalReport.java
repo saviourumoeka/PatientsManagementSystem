@@ -14,15 +14,16 @@ public class ClinicalReport extends AuditModel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	@NotNull
+	//@NotNull
 	private String complain;
 	
 	private String symtoms;
-	@NotNull
+	//@NotNull
 	private String diagnostic;
 	
 	@ManyToOne
 	private VitalScience vaitalScience;
+	
 	@ManyToOne
 	private Patient patient;
 
@@ -40,9 +41,6 @@ public class ClinicalReport extends AuditModel {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getComplain() {
 		return complain;
@@ -74,6 +72,33 @@ public class ClinicalReport extends AuditModel {
 
 	public void setVaitalScience(VitalScience vaitalScience) {
 		this.vaitalScience = vaitalScience;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ClinicalReport [id=");
+		builder.append(id);
+		builder.append(", complain=");
+		builder.append(complain);
+		builder.append(", symtoms=");
+		builder.append(symtoms);
+		builder.append(", diagnostic=");
+		builder.append(diagnostic);
+		builder.append(", vaitalScience=");
+		builder.append(vaitalScience);
+		builder.append(", patient=");
+		builder.append(patient);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	

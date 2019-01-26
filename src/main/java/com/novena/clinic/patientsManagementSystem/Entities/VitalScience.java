@@ -1,13 +1,10 @@
 package com.novena.clinic.patientsManagementSystem.Entities;
 
-import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 
@@ -23,8 +20,7 @@ public class VitalScience extends AuditModel {
 	private double temperture;
 	@NotNull
 	private int pluseRate;
-	@OneToMany(mappedBy = "vaitalScience", fetch = FetchType.LAZY)
-	private Set<ClinicalReport> clinicalReport;
+	
 
 	public VitalScience() {
 	}
@@ -37,10 +33,6 @@ public class VitalScience extends AuditModel {
 
 	public Integer getId() {
 		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public double getWeight() {
@@ -67,12 +59,21 @@ public class VitalScience extends AuditModel {
 		this.pluseRate = pluseRate;
 	}
 
-	public Set<ClinicalReport> getClinicalReport() {
-		return clinicalReport;
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("VitalScience [id=");
+		builder.append(id);
+		builder.append(", weight=");
+		builder.append(weight);
+		builder.append(", temperture=");
+		builder.append(temperture);
+		builder.append(", pluseRate=");
+		builder.append(pluseRate);
+		builder.append("]");
+		return builder.toString();
 	}
-
-	public void setClinicalReport(Set<ClinicalReport> clinicalReport) {
-		this.clinicalReport = clinicalReport;
-	}
+	
+	
 
 }

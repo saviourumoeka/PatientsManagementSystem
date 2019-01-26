@@ -1,36 +1,36 @@
 package com.novena.clinic.patientsManagementSystem.Entities;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.BloodGroup;
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.Gender;
-import com.novena.clinic.patientsManagementSystem.Entities.Enums.Level;
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.MaritalStatus;
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.Genotype;
 
 @Entity
-public class Patient extends AuditModel {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Patient extends AuditModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
-
-	@Column(unique = true, nullable = false)
-	@NotEmpty(message = "Matric Number Cannot be Empty")
-	private String matricNumber;
 
 	private String firstName;
 
@@ -43,63 +43,57 @@ public class Patient extends AuditModel {
 
 	@Column(unique = true, nullable = false)
 	private String email;
-
+	
+	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	@NotNull
-	@NotEmpty(message = "Date of Birth cannot be empty")
-	private Date dateOfBirth;
+	//@NotNull
+	//@NotEmpty(message = "Date of Birth cannot be empty")
+	private LocalDate dateOfBirth;
 
-	@NotNull
-	@NotEmpty(message = "marital status cannot be empty")
+	//@NotNull
+	//@NotEmpty(message = "marital status cannot be empty")
+	@Enumerated(EnumType.STRING)
 	private MaritalStatus maritalStatus;
 
-	@NotNull
-	@NotEmpty(message = "Level cannot be empty")
-	private Level level;
+	private String deparment;
 
-	@NotNull
-	private String department;
+	//@NotNull
+	@Embedded
+	private HomeAddress homeAdress;
 
-	@NotNull
-	private String faculty;
-
-	@NotNull
-	private String homeAdress;
-
-	@NotNull
-	private String campusAdress;
-
-	@NotNull
+	//@NotNull
 	private String stateOfOrigin;
 
-	@NotNull
+	//@NotNull
 	private String LGAOfOrigin;
 
-	@NotNull
+	//@NotNull
 	private String emergencyContact;
 
-	@NotNull
+	//@NotNull
 	private String phoneNumberOfEmergencyContact;
 
 	@NotNull
 	private String adressOfEmergencyContact;
 
-	@NotNull
+	//@NotNull
 	private String relationshipToEmergencyContact;
 
-	@NotNull
+	//@NotNull
+	@Enumerated(EnumType.STRING)
 	private BloodGroup bloodgroup;
 
-	@NotNull
+	//@NotNull
+	@Enumerated(EnumType.STRING)
 	private Genotype Genotype;
 
 	@ElementCollection
-	private List<String> allergies = new ArrayList<String>();
+	private List<String> allergies;
 	@ElementCollection
 	private List<String> medicalConditions;
-	
-	@OneToMany(mappedBy="patient",fetch=FetchType.LAZY)
+
+	@OneToMany(mappedBy = "patient", fetch = FetchType.LAZY)
 	private List<ClinicalReport> clinicalReports;
 
 	/**
@@ -108,13 +102,11 @@ public class Patient extends AuditModel {
 	public Patient() {
 	}
 
-	public Patient(String matricNumber, String firstName, String middleName, String lastName, int phoneNumber,
-			String email, Gender gender, Date dateOfBirth, MaritalStatus maritalStatus, Level level, String department,
-			String faculty, String homeAdress, String campusAdress, String stateOfOrigin, String lGAOfOrigin,
-			String emergencyContact, String phoneNumberOfEmergencyContact, String adressOfEmergencyContact,
-			String relationshipToEmergencyContact, BloodGroup bloodgroup, Genotype genotype, List<String> allergies,
-			List<String> medicalConditions) {
-		this.matricNumber = matricNumber;
+	public Patient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
+			LocalDate dateOfBirth, MaritalStatus maritalStatus, String deparment, HomeAddress homeAdress,
+			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
+			String adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
+			Genotype genotype, List<String> allergies, List<String> medicalConditions) {
 		this.firstName = firstName;
 		this.middleName = middleName;
 		this.lastName = lastName;
@@ -123,11 +115,8 @@ public class Patient extends AuditModel {
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
 		this.maritalStatus = maritalStatus;
-		this.level = level;
-		this.department = department;
-		this.faculty = faculty;
+		this.deparment = deparment;
 		this.homeAdress = homeAdress;
-		this.campusAdress = campusAdress;
 		this.stateOfOrigin = stateOfOrigin;
 		LGAOfOrigin = lGAOfOrigin;
 		this.emergencyContact = emergencyContact;
@@ -146,14 +135,6 @@ public class Patient extends AuditModel {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getMatricNumber() {
-		return matricNumber;
-	}
-
-	public void setMatricNumber(String matricNumber) {
-		this.matricNumber = matricNumber;
 	}
 
 	public String getFirstName() {
@@ -204,11 +185,11 @@ public class Patient extends AuditModel {
 		this.gender = gender;
 	}
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
@@ -220,44 +201,20 @@ public class Patient extends AuditModel {
 		this.maritalStatus = maritalStatus;
 	}
 
-	public Level getLevel() {
-		return level;
+	public String getDeparment() {
+		return deparment;
 	}
 
-	public void setLevel(Level level) {
-		this.level = level;
+	public void setDeparment(String deparment) {
+		this.deparment = deparment;
 	}
 
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public String getFaculty() {
-		return faculty;
-	}
-
-	public void setFaculty(String faculty) {
-		this.faculty = faculty;
-	}
-
-	public String getHomeAdress() {
+	public HomeAddress getHomeAdress() {
 		return homeAdress;
 	}
 
-	public void setHomeAdress(String homeAdress) {
+	public void setHomeAdress(HomeAddress homeAdress) {
 		this.homeAdress = homeAdress;
-	}
-
-	public String getCampusAdress() {
-		return campusAdress;
-	}
-
-	public void setCampusAdress(String campusAdress) {
-		this.campusAdress = campusAdress;
 	}
 
 	public String getStateOfOrigin() {
@@ -350,16 +307,17 @@ public class Patient extends AuditModel {
 
 	@Override
 	public String toString() {
-		return "Patient [id=" + id + ", matricNumber=" + matricNumber + ", firstName=" + firstName + ", lastName="
+		return "\nPatient [id=" + id + ", firstName=" + firstName + ", middleName=" + middleName + ", lastName="
 				+ lastName + ", phoneNumber=" + phoneNumber + ", email=" + email + ", gender=" + gender
-				+ ", dateOfBirth=" + dateOfBirth + ", maritalStatus=" + maritalStatus + ", level=" + level
-				+ ", department=" + department + ", faculty=" + faculty + ", homeAdress=" + homeAdress
-				+ ", campusAdress=" + campusAdress + ", stateOfOrigin=" + stateOfOrigin + ", LGAOfOrigin=" + LGAOfOrigin
+				+ ", dateOfBirth=" + dateOfBirth + ", maritalStatus=" + maritalStatus + ", deparment=" + deparment
+				+ ", homeAdress=" + homeAdress + ", stateOfOrigin=" + stateOfOrigin + ", LGAOfOrigin=" + LGAOfOrigin
 				+ ", emergencyContact=" + emergencyContact + ", phoneNumberOfEmergencyContact="
 				+ phoneNumberOfEmergencyContact + ", adressOfEmergencyContact=" + adressOfEmergencyContact
 				+ ", relationshipToEmergencyContact=" + relationshipToEmergencyContact + ", bloodgroup=" + bloodgroup
 				+ ", Genotype=" + Genotype + ", allergies=" + allergies + ", medicalConditions=" + medicalConditions
 				+ "]";
 	}
+	
+	
 
 }
