@@ -1,4 +1,4 @@
-# Patients Management System For Novena University
+# Patients Management System For University
 
 To run this app locally on your machine,
 first clone this git repository, then open eclipes ,click on file,
