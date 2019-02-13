@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/frontpage :: header"/>
+<body id="page-top">
+
+	<nav th:replace="common/frontpage :: navbar" />
+	
+	<div id="wrapper">
+	
+			<!-- Side Bar -->
+			<ul th:replace="common/frontpage :: sidebar"/>
+			
+		 <div id="content-wrapper">
+		 
+		  <div class="container-fluid">
+		  	<ol th:replace="common/frontpage :: mini-nav"/>
+		  
+		   <div class="card-header">Register a Patient</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
+                    <label for="firstName">Last name</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required">
+                    <label for="lastName">First name</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="middleName" class="form-control" placeholder="Middle name" required="required">
+                    <label for="lastName">Middle name</label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+              <div class="col-md-5">
+                  <div class="form-label-group">
+                      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+                      <label for="inputEmail">Email address</label>
+                  </div>
+              </div>
+
+              <div class="col-md-5">
+                  <div class="form-label-group">
+                      <input type="text" id="inputPnum" class="form-control" placeholder="Phone Number" required="required">
+                      <label for="inputPnum">Phone Number</label>
+                  </div>
+              </div>
+              
+              <div class="col-md-2">
+                  <div class="form-label-group">
+                      <select id="gender" class="form-control" placeholder="gender" required="required">
+                      		
+                      </select>
+                      <label for="Gender">Gender</label>
+                  </div>
+              </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="date" id="inputPassword" class="form-control" placeholder="Date of Birth" required="required">
+                    <label for="inputPassword">Date of Birth</label>
+                  </div>
+                </div>
+                <!-- <div class="col-md-6">
+                  <div class="form-label-group">
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm password" required="required">
+                    <label for="confirmPassword">Confirm password</label>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+            <button class="btn btn-primary text-center" type="submit">Register</button>
+          </form>
+        
+        </div>
+      </div>
+		  
+		  </div>
+		 
+		 	<footer th:replace="common/frontpage :: footer"/>
+		 </div><!-- content-wrapper -->
+	
+	</div><!-- wrapper -->
+	
+	<!-- Stroll to top button -->
+	<a th:replace="common/frontpage :: top-button"/>
+	
+	<!-- logout modal -->
+	<div th:replace="common/frontpage :: logout-modal"/>
+	
+<div th:replace="common/frontpage :: scripts"/>
+</body>
+</html>
