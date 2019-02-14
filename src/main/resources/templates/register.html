@@ -44,14 +44,14 @@
             </div>
             <div class="form-group">
               <div class="form-row">
-              <div class="col-md-5">
+              <div class="col-md-4">
                   <div class="form-label-group">
                       <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
                       <label for="inputEmail">Email address</label>
                   </div>
               </div>
 
-              <div class="col-md-5">
+              <div class="col-md-4">
                   <div class="form-label-group">
                       <input type="text" id="inputPnum" class="form-control" placeholder="Phone Number" required="required">
                       <label for="inputPnum">Phone Number</label>
@@ -59,21 +59,33 @@
               </div>
               
               <div class="col-md-2">
-                  <div class="form-label-group">
-                      <select id="gender" class="form-control" placeholder="gender" required="required">
-                      		
-                      </select>
-                      <label for="Gender">Gender</label>
-                  </div>
-              </div>
-              </div>
+				 <div class="form-group">
+				    <select class="form-control">
+				    <option value="" selected disabled> Select Gender... </option>
+				      <option th:each="gender : ${genders}"
+				      th:text="${gender.gender}"
+				      th:value="${gender}">1</option>
+				    </select>
+				  </div>
+				</div>
+				
+				<!-- <div class="col-md-2">
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Second default radio
+				  </label>
+				</div>
+				</div> -->
+				
+              </div> <!-- End of First Row -->
             </div>
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-6">
                   <div class="form-label-group">
-                    <input type="date" id="inputPassword" class="form-control" placeholder="Date of Birth" required="required">
-                    <label for="inputPassword">Date of Birth</label>
+                    <input type="date" id="dateOfBirth" class="form-control" placeholder="Date of Birth" required="required">
+                    <label for="dateOfBirth">Date of Birth</label>
                   </div>
                 </div>
                 <!-- <div class="col-md-6">
