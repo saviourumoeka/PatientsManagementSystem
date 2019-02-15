@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.novena.clinic.patientsManagementSystem.Entities.CampusAddress;
 import com.novena.clinic.patientsManagementSystem.Entities.ClinicalReport;
+import com.novena.clinic.patientsManagementSystem.Entities.ContactAddress;
 import com.novena.clinic.patientsManagementSystem.Entities.HomeAddress;
 import com.novena.clinic.patientsManagementSystem.Entities.Patient;
 import com.novena.clinic.patientsManagementSystem.Entities.StaffPatient;
@@ -46,10 +47,16 @@ public class DevBootStrap implements ApplicationListener<ContextRefreshedEvent> 
 		allergies.add("Wine");
 		LocalDate date =LocalDate.now();
 		HomeAddress homeAdress = new HomeAddress();
-		homeAdress.setStreetNumber(001);
+		homeAdress.setHouseNumber(001);
 		homeAdress.setStreetName("No Where");
 		homeAdress.setAddressCity("C city");
 		homeAdress.setAddressState("C state");
+		
+		ContactAddress contact = new ContactAddress();
+		contact.setHouseNumber(001);
+		contact.setStreetName("No Where");
+		contact.setAddressCity("C city");
+		contact.setAddressState("C state");
 		
 		StudentPatient one = new StudentPatient();
 		one.setFirstName("John");
@@ -60,7 +67,7 @@ public class DevBootStrap implements ApplicationListener<ContextRefreshedEvent> 
 		one.setDeparment("CSC");
 		one.setFaculty("Physical Science");
 		one.setCampusAddress(campusAddress);
-		one.setAdressOfEmergencyContact("His house");
+		one.setAdressOfEmergencyContact(contact);
 		one.setAllergies(allergies);
 		one.setBloodgroup(BloodGroup.B_NEGATIVE);
 		one.setDateOfBirth(date);

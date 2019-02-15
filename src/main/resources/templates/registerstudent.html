@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/frontpage :: header"/>
+<body id="page-top">
+
+	<nav th:replace="common/frontpage :: navbar" />
+	
+	<div id="wrapper">
+	
+			<!-- Side Bar -->
+			<ul th:replace="common/frontpage :: sidebar"/>
+			
+		 <div id="content-wrapper">
+		 
+		  <div class="container-fluid">
+		  	<ol th:replace="common/frontpage :: mini-nav"/>
+		  
+		   <div class="card-header">Register a Patient</div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
+                    <label for="firstName">Last name</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required">
+                    <label for="lastName">First name</label>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="middleName" class="form-control" placeholder="Middle name" required="required">
+                    <label for="lastName">Middle name</label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+              <div class="col-md-4">
+                  <div class="form-label-group">
+                      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+                      <label for="inputEmail">Email address</label>
+                  </div>
+              </div>
+
+              <div class="col-md-4">
+                  <div class="form-label-group">
+                      <input type="text" id="inputPnum" class="form-control" placeholder="Phone Number" required="required">
+                      <label for="inputPnum">Phone Number</label>
+                  </div>
+              </div>
+              
+              <div class="col-md-4">
+                  <select class="form-control">
+                      <option selected disabled> Select Gender</option>
+                        <option th:each="gender : ${genders}"
+                        th:text="${gender.gender}"
+                        th:value="${gender}">1</option>
+                      </select>
+          </div>
+
+         
+				
+				<!-- <div class="col-md-2">
+				<div class="form-check">
+				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+				  <label class="form-check-label" for="exampleRadios2">
+				    Second default radio
+				  </label>
+				</div>
+				</div> -->
+				
+              </div> <!-- End of First Row -->
+            </div>
+
+            <div class="form-group">
+              <div class="form-row">
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="date" id="dateOfBirth" class="form-control" placeholder="Date of Birth" required="required">
+                    <label for="dateOfBirth">Date of Birth</label>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-label-group">
+                    <input type="text" id="matric_number" class="form-control" placeholder="Matric Number" required="required">
+                    <label for="matric_number">Matric Number</label>
+                  </div>
+                </div>
+
+                  <div class="col-md-4">
+                    <div class="form-label-group">
+                      <input type="text" id="department" class="form-control" placeholder="Department" required="required">
+                      <label for="department">Department</label>
+                    </div>
+                  </div>
+              </div><!--End Of Row 3-->
+            </div>
+
+              <div class="form-group">
+                <div class="form-row"><!--Row 4-->
+
+                  <div class="col-md-4">
+                    <div class="form-label-group">
+                      <input type="text" id="faculty" class="form-control" placeholder="faculty" required="required">
+                      <label for="department">Faculty</label>
+                    </div>
+                  </div>
+
+                  <div class="col-md-4">
+                          <select class="form-control">
+                          <option selected disabled> Select Level</option>
+                            <option th:each="level : ${levels}"
+                            th:text="${level.level}"
+                            th:value="${level}"></option>
+                          </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <select class="form-control">
+                            <option selected disabled> Select Marital Status</option>
+                              <option th:each="status : ${maritalStatus}"
+                              th:text="${status.maritalStatus}"
+                              th:value="${status}">1</option>
+                            </select>
+                </div>
+
+              </div> <!--End of row 4-->
+            </div>
+
+              <div class="form-group">
+                <div class="form-row"> <!--Row 5-->
+
+                    <div class="col-md-4">
+                        <div class="form-label-group">
+                          <input type="text" id="state" class="form-control" placeholder="State of Origin" required="required">
+                          <label for="state">State of Origin</label>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                          <div class="form-label-group">
+                            <input type="text" id="lga" class="form-control" placeholder="Local Goverment Area of Origin" required="required">
+                            <label for="LGA">Local Goverment Area of Origin</label>
+                          </div>
+                        </div>
+
+                </div><!--End of row 5-->
+              </div>
+
+              <hr>
+              <h5>Home Address</h5>
+
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-2">
+                    <div class="form-label-group">
+                        <input type="text" id="houseNumber" class="form-control" placeholder="House Number" required="required">
+                        <label for="houseNumber">House Number</label>
+                    </div>    
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-label-group">
+                        <input type="text" id="streetName" class="form-control" placeholder="Street Name" required="required">
+                        <label for="streetName">Street Name</label>
+                    </div>
+                 </div>
+
+                  <div class="col-md-2">
+                    <div class="form-label-group">
+                        <input type="text" id="addressCity" class="form-control" placeholder="City" required="required">
+                        <label for="addressCity">City</label>
+                    </div>  
+                  </div>
+
+                  <div class="col-md-2">
+                    <div class="form-label-group">
+                        <input type="text" id="addressState" class="form-control" placeholder="State" required="required">
+                        <label for="addressState">State</label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <hr>
+              <h5>Campus Address</h5>
+              <div class="form-group">
+                <div class="form-row">
+                  <div class="col-md-6">
+                      <div class="form-label-group">
+                          <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" required="required">
+                          <label for="addressState">Room number</label>
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="form-label-group">
+                          <input type="text" id="hallname" class="form-control" placeholder="Hall Name" required="required">
+                          <label for="addressState">Hall Name</label>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr>
+              <h5>Emergency Contact</h5>
+              <div class="form-group">
+                  <div class="form-row">
+                    <div class="col-md-4">
+                        <div class="form-label-group">
+                            <input type="text" id="contactName" class="form-control" placeholder="Contact Name" required="required">
+                            <label for="contactName">Contact Name</label>
+                        </div>
+                    </div>
+  
+                    <div class="col-md-3">
+                        <div class="form-label-group">
+                            <input type="text" id="cPNum" class="form-control" placeholder="Contact Phone Number" required="required">
+                            <label for="cPNum">Contact Phone Number</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-label-group">
+                            <input type="text" id="contactEmail" class="form-control" placeholder="Contact Email" required="required">
+                            <label for="contactEmail">Contact Email</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="form-label-group">
+                            <input type="text" id="rship2Contact" class="form-control" placeholder="Relationship" required="required">
+                            <label for="rship2Contact">Relationship</label>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-row">
+                      <div class="col-md-2">
+                        <div class="form-label-group">
+                            <input type="text" id="houseNumber" class="form-control" placeholder="House Number" required="required">
+                            <label for="houseNumber">House Number</label>
+                        </div>    
+                      </div>
+    
+                      <div class="col-md-6">
+                        <div class="form-label-group">
+                            <input type="text" id="streetName" class="form-control" placeholder="Street Name" required="required">
+                            <label for="streetName">Street Name</label>
+                        </div>
+                     </div>
+    
+                      <div class="col-md-2">
+                        <div class="form-label-group">
+                            <input type="text" id="addressCity" class="form-control" placeholder="City" required="required">
+                            <label for="addressCity">City</label>
+                        </div>  
+                      </div>
+    
+                      <div class="col-md-2">
+                        <div class="form-label-group">
+                            <input type="text" id="addressState" class="form-control" placeholder="State" required="required">
+                            <label for="addressState">State</label>
+                        </div>
+                      </div>
+    
+                    </div>
+                  </div>
+
+                  <hr>
+                  <h5>Medical Information</h5>
+                  <div class="form-group">
+                    <div class="form-row">
+
+                        <div class="col-md-4">
+                            <select class="form-control">
+                                <option selected disabled> Select Blood Group</option>
+                                  <option th:each="bg : ${bloodGroups}"
+                                  th:text="${bg.bloodGroup}"
+                                  th:value="${bg}">1</option>
+                                </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <select class="form-control">
+                                <option selected disabled> Select Genotype</option>
+                                  <option th:each="genotype : ${genotypes}"
+                                  th:text="${genotype.genotype}"
+                                  th:value="${genotype}">1</option>
+                                </select>
+                        </div>
+                        <div class="col-md-2">
+                          <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Allergies"></textarea>
+                        </div>
+                        <div class="col-md-2">
+                            <textarea class="form-control"  name="" id="" cols="30" rows="10" placeholder="Conditions"></textarea>
+                          </div>
+
+                    </div>
+                  </div>
+
+
+
+            <button class="btn btn-primary text-center mt-5" type="submit">Register</button>
+          </form>
+        
+        </div>
+      </div>
+		  
+		  </div>
+		 
+		 	<footer th:replace="common/frontpage :: footer"/>
+		 </div><!-- content-wrapper -->
+	
+	</div><!-- wrapper -->
+	
+	<!-- Stroll to top button -->
+	<a th:replace="common/frontpage :: top-button"/>
+	
+	<!-- logout modal -->
+	<div th:replace="common/frontpage :: logout-modal"/>
+	
+<div th:replace="common/frontpage :: scripts"/>
+</body>
+</html>

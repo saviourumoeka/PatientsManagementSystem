@@ -75,7 +75,7 @@ public abstract class Patient extends AuditModel {
 	private String phoneNumberOfEmergencyContact;
 
 	@NotNull
-	private String adressOfEmergencyContact;
+	private ContactAddress adressOfEmergencyContact;
 
 	//@NotNull
 	private String relationshipToEmergencyContact;
@@ -105,7 +105,7 @@ public abstract class Patient extends AuditModel {
 	public Patient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, String deparment, HomeAddress homeAdress,
 			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
-			String adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
+			ContactAddress adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
 			Genotype genotype, List<String> allergies, List<String> medicalConditions) {
 		this.firstName = firstName;
 		this.middleName = middleName;
@@ -249,11 +249,11 @@ public abstract class Patient extends AuditModel {
 		this.phoneNumberOfEmergencyContact = phoneNumberOfEmergencyContact;
 	}
 
-	public String getAdressOfEmergencyContact() {
+	public ContactAddress getAdressOfEmergencyContact() {
 		return adressOfEmergencyContact;
 	}
 
-	public void setAdressOfEmergencyContact(String adressOfEmergencyContact) {
+	public void setAdressOfEmergencyContact(ContactAddress adressOfEmergencyContact) {
 		this.adressOfEmergencyContact = adressOfEmergencyContact;
 	}
 

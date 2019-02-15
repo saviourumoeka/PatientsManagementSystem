@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class HomeAddress {
 	
-	private int streetNumber;
+	private int houseNumber;
 	
 	private String streetName;
 	
@@ -19,18 +19,18 @@ public class HomeAddress {
 	}
 
 	public HomeAddress(int streetNumber, String streetName, String addressCity, String addressState) {
-		this.streetNumber = streetNumber;
+		this.houseNumber = streetNumber;
 		this.streetName = streetName;
 		this.addressCity = addressCity;
 		this.addressState = addressState;
 	}
 
-	public int getStreetNumber() {
-		return streetNumber;
+	public int getHouseNumber() {
+		return houseNumber;
 	}
 
-	public void setStreetNumber(int streetNumber) {
-		this.streetNumber = streetNumber;
+	public void setHouseNumber(int streetNumber) {
+		this.houseNumber = streetNumber;
 	}
 
 	public String getStreetName() {
@@ -61,7 +61,7 @@ public class HomeAddress {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("HomeAddress [streetNumber=");
-		builder.append(streetNumber);
+		builder.append(houseNumber);
 		builder.append(", streetName=");
 		builder.append(streetName);
 		builder.append(", addressCity=");

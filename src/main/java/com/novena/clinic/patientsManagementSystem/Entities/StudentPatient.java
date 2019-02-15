@@ -43,7 +43,7 @@ public class StudentPatient extends Patient {
 	public StudentPatient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, HomeAddress homeAdress,
 			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
-			String adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
+			ContactAddress adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
 			com.novena.clinic.patientsManagementSystem.Entities.Enums.Genotype genotype, List<String> allergies,
 			List<String> medicalConditions, String matricNumber, Level level, String department, String faculty,
 			CampusAddress campusAddress) {

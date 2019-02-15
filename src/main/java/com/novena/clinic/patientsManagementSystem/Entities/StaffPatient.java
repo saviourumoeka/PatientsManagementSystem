@@ -37,7 +37,7 @@ public class StaffPatient extends Patient {
 	public StaffPatient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, String deparment, HomeAddress homeAdress,
 			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
-			String adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
+			ContactAddress adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
 			com.novena.clinic.patientsManagementSystem.Entities.Enums.Genotype genotype, List<String> allergies,
 			List<String> medicalConditions, String staffNumber, StaffType staffType, StaffCategory staffCategory,
 			String rank, String officeBlock) {
