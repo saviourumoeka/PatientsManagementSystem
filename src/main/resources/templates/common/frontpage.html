@@ -125,13 +125,21 @@
         <div class="container-fluid">
 
           <!-- Breadcrumbs-->
-          <ol class="breadcrumb" th:fragment="mini-nav">
+          <div th:fragment="mini-nav">
+             <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
+              <a href="#" th:text="${breadcrumb}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Overview</li>
+            <li class="breadcrumb-item active" th:text="${breadcrumbItem}">Overview</li>
           </ol>
-
+          
+            <ul class="nav navbar-nav navbar-right breadcrumb-item">
+            <li>
+            <a th:href="*{link}" class="btn btn-primary"  th:text="${forType}"></a>
+            </li>
+            </ul>
+          </div>
+       
         </div>
         <!-- /.container-fluid -->
 

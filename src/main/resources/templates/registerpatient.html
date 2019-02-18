@@ -89,12 +89,18 @@
                     <label for="dateOfBirth">Date of Birth</label>
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4" th:if="${student==true}">
                   <div class="form-label-group">
                     <input type="text" id="matric_number" class="form-control" placeholder="Matric Number" required="required">
                     <label for="matric_number">Matric Number</label>
                   </div>
                 </div>
+                <div class="col-md-4" th:if="${staff==true}">
+                    <div class="form-label-group">
+                      <input type="text" id="staffId" class="form-control" placeholder="Staff ID" required="required">
+                      <label for="staffId">Staff ID</label>
+                    </div>
+                  </div>
 
                   <div class="col-md-4">
                     <div class="form-label-group">
@@ -108,20 +114,36 @@
               <div class="form-group">
                 <div class="form-row"><!--Row 4-->
 
-                  <div class="col-md-4">
+                  <div class="col-md-4"  th:if="${student==true}">
                     <div class="form-label-group">
                       <input type="text" id="faculty" class="form-control" placeholder="faculty" required="required">
-                      <label for="department">Faculty</label>
+                      <label for="faculty">Faculty</label>
                     </div>
                   </div>
 
-                  <div class="col-md-4">
+                  <div class="col-md-4"  th:if="${student==true}">
                           <select class="form-control">
                           <option selected disabled> Select Level</option>
                             <option th:each="level : ${levels}"
                             th:text="${level.level}"
                             th:value="${level}"></option>
                           </select>
+                    </div>
+
+                    <div class="col-md-4"  th:if="${staff==true}">
+                        <select class="form-control">
+                        <option selected disabled> Select Staff Type</option>
+                          <option th:each="category : ${categories}"
+                          th:text="${category.staffCategory}"
+                          th:value="${category}"></option>
+                        </select>
+                  </div>
+
+                  <div class="col-md-4"  th:if="${staff==true}">
+                      <div class="form-label-group">
+                        <input type="text" id="rank" class="form-control" placeholder="rank" required="required">
+                        <label for="rank">Rank</label>
+                      </div>
                     </div>
 
                     <div class="col-md-4">
@@ -152,6 +174,15 @@
                             <label for="LGA">Local Goverment Area of Origin</label>
                           </div>
                         </div>
+
+                        <div class="col-md-4"  th:if="${staff==true}">
+                            <select class="form-control">
+                            <option selected disabled> Select Staff Type</option>
+                              <option th:each="type : ${types}"
+                              th:text="${type.staffType}"
+                              th:value="${type}"></option>
+                            </select>
+                      </div>
 
                 </div><!--End of row 5-->
               </div>
@@ -192,9 +223,11 @@
                 </div>
               </div>
 
+              <!--Campus address-->
+              <div class="form-group"  th:if="${student==true}">
+                
               <hr>
               <h5>Campus Address</h5>
-              <div class="form-group">
                 <div class="form-row">
                   <div class="col-md-6">
                       <div class="form-label-group">
@@ -211,6 +244,21 @@
                   </div>
                 </div>
               </div>
+
+              <!--Office Block-->
+              <div class="form-group"  th:if="${student==true}">
+                
+                  <hr>
+                  <h5>Office Block</h5>
+                    <div class="form-row">
+                      <div class="col-md-6">
+                          <div class="form-label-group">
+                              <input type="text" id="roomNumber" class="form-control" placeholder="Office Block" required="required">
+                              <label for="addressState">Office Block</label>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
 
               <hr>
               <h5>Emergency Contact</h5>
