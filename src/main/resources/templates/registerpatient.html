@@ -14,29 +14,35 @@
 		 
 		  <div class="container-fluid">
 		  	<ol th:replace="common/frontpage :: mini-nav"/>
+		  	
+		  	  <ul class="nav navbar-nav navbar-right">
+            <li>
+            <a th:href="@{__${link}__}" class="btn btn-primary"  th:text="${forType}"></a>
+            </li>
+            </ul>
 		  
 		   <div class="card-header">Register a Patient</div>
         <div class="card-body">
-          <form>
+          <form th:attrappend="action=${student == true}?@{/createStudentPatient}:@{/createStaffPatient}">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-4">
                   <div class="form-label-group">
                     <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
-                    <label for="firstName">Last name</label>
+                    <label for="lastName">Last name</label>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-label-group">
                     <input type="text" id="firstName" class="form-control" placeholder="First name" required="required">
-                    <label for="lastName">First name</label>
+                    <label for="firstName">First name</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-label-group">
                     <input type="text" id="middleName" class="form-control" placeholder="Middle name" required="required">
-                    <label for="lastName">Middle name</label>
+                    <label for="middleName">Middle name</label>
                   </div>
                 </div>
 
@@ -170,7 +176,7 @@
 
                       <div class="col-md-4">
                           <div class="form-label-group">
-                            <input type="text" id="lga" class="form-control" placeholder="Local Goverment Area of Origin" required="required">
+                            <input type="text" id="LGA" class="form-control" placeholder="Local Goverment Area of Origin" required="required">
                             <label for="LGA">Local Goverment Area of Origin</label>
                           </div>
                         </div>
@@ -232,14 +238,14 @@
                   <div class="col-md-6">
                       <div class="form-label-group">
                           <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" required="required">
-                          <label for="addressState">Room number</label>
+                          <label for="roomNumber">Room number</label>
                       </div>
                   </div>
 
                   <div class="col-md-6">
                       <div class="form-label-group">
                           <input type="text" id="hallname" class="form-control" placeholder="Hall Name" required="required">
-                          <label for="addressState">Hall Name</label>
+                          <label for="hallname">Hall Name</label>
                       </div>
                   </div>
                 </div>
@@ -253,8 +259,8 @@
                     <div class="form-row">
                       <div class="col-md-6">
                           <div class="form-label-group">
-                              <input type="text" id="roomNumber" class="form-control" placeholder="Office Block" required="required">
-                              <label for="addressState">Office Block</label>
+                              <input type="text" id="officeBlock" class="form-control" placeholder="Office Block" required="required">
+                              <label for="officeBlock">Office Block</label>
                           </div>
                       </div>
                     </div>
@@ -298,29 +304,29 @@
                     <div class="form-row">
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="houseNumber" class="form-control" placeholder="House Number" required="required">
-                            <label for="houseNumber">House Number</label>
+                            <input type="text" id="chouseNumber" class="form-control" placeholder="House Number" required="required">
+                            <label for="chouseNumber">House Number</label>
                         </div>    
                       </div>
     
                       <div class="col-md-6">
                         <div class="form-label-group">
-                            <input type="text" id="streetName" class="form-control" placeholder="Street Name" required="required">
-                            <label for="streetName">Street Name</label>
+                            <input type="text" id="cstreetName" class="form-control" placeholder="Street Name" required="required">
+                            <label for="cstreetName">Street Name</label>
                         </div>
                      </div>
     
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="addressCity" class="form-control" placeholder="City" required="required">
-                            <label for="addressCity">City</label>
+                            <input type="text" id="caddressCity" class="form-control" placeholder="City" required="required">
+                            <label for="caddressCity">City</label>
                         </div>  
                       </div>
     
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="addressState" class="form-control" placeholder="State" required="required">
-                            <label for="addressState">State</label>
+                            <input type="text" id="caddressState" class="form-control" placeholder="State" required="required">
+                            <label for="caddressState">State</label>
                         </div>
                       </div>
     

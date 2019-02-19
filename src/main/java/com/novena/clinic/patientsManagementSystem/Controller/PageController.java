@@ -18,6 +18,8 @@ public class PageController {
 	@RequestMapping("/")
 	public String root(ModelMap model) {
 		model.addAttribute("pageTitle", "Dashboard Home Page");
+		model.addAttribute("breadcrumb", "Dashboard");
+		model.addAttribute("breadcrumbItem", "Overview");
 		return "index";
 	}
 	
@@ -38,7 +40,7 @@ public class PageController {
 		model.addAttribute("bloodGroups", BloodGroup.values());
 		model.addAttribute("genotypes", Genotype.values());
 		model.addAttribute("student", true);
-		model.addAttribute("link", "/clinic/registerStaff");
+		model.addAttribute("link", "registerStaff");
 		model.addAttribute("forType", "Staff");
 		return "registerpatient";
 	}
@@ -51,7 +53,7 @@ public class PageController {
 		model.addAttribute("types", StaffType.values());
 		model.addAttribute("categories", StaffCategory.values());
 		model.addAttribute("staff", true);
-		model.addAttribute("link", "/clinic/registerPatient");
+		model.addAttribute("link", "registerPatient");
 		model.addAttribute("forType", "Student");
 		return"registerpatient";
 	}
