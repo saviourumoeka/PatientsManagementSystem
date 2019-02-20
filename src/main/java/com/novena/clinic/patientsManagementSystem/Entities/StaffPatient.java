@@ -3,6 +3,7 @@ package com.novena.clinic.patientsManagementSystem.Entities;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,17 +16,19 @@ import com.novena.clinic.patientsManagementSystem.Entities.Enums.StaffType;
 
 @Entity
 public class StaffPatient extends Patient {
-	
+	@Column(nullable = false)
 	private String staffNumber;
 	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StaffType staffType;
 	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StaffCategory staffCategory;
 	
 	private String rank;
-	
+	@Column(nullable = false)
 	private String officeBlock;
 	
 	

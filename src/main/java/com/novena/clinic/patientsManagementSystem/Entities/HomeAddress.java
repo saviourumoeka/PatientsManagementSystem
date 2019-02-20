@@ -1,16 +1,21 @@
 package com.novena.clinic.patientsManagementSystem.Entities;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class HomeAddress {
 	
+	@Column(nullable = false)
 	private int houseNumber;
 	
+	@Column(nullable = false)
 	private String streetName;
 	
+	@Column(nullable = false)
 	private String addressCity;
 	
+	@Column(nullable = false)
 	private String addressState;
 	
 	

@@ -23,12 +23,13 @@ public class StudentPatient extends Patient {
 	//@NotEmpty(message = "Matric Number Cannot be Empty")
 	private String matricNumber;
 
-	//@NotNull
 	//@NotEmpty(message = "Level cannot be empty")
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
+	//@NotEmpty(message = "Level cannot be empty")
 	private Level level;
 
-	//@NotNull
+	@Column(nullable = false)
 	private String faculty;
 	
 	

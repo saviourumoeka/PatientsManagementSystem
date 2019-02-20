@@ -31,11 +31,14 @@ public abstract class Patient extends AuditModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Integer id;
-
+	
+	@Column(nullable = false)
 	private String firstName;
 
+	@Column(nullable = false)
 	private String middleName;
 
+	@Column(nullable = false)
 	private String lastName;
 
 	@Column(unique = true, nullable = false)
@@ -44,47 +47,48 @@ public abstract class Patient extends AuditModel {
 	@Column(unique = true, nullable = false)
 	private String email;
 	
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 
-	//@NotNull
+	@Column(nullable = false)
 	//@NotEmpty(message = "Date of Birth cannot be empty")
 	private LocalDate dateOfBirth;
 
-	//@NotNull
+	@Column(nullable = false)
 	//@NotEmpty(message = "marital status cannot be empty")
 	@Enumerated(EnumType.STRING)
 	private MaritalStatus maritalStatus;
 
 	private String deparment;
 
-	//@NotNull
+	
 	@Embedded
 	private HomeAddress homeAdress;
 
-	//@NotNull
+	@Column(nullable = false)
 	private String stateOfOrigin;
 
-	//@NotNull
+	@Column(nullable = false)
 	private String LGAOfOrigin;
 
-	//@NotNull
+	@Column(nullable = false)
 	private String emergencyContact;
 
-	//@NotNull
+	@Column(nullable = false)
 	private String phoneNumberOfEmergencyContact;
 
-	@NotNull
+	@Column(nullable = false)
 	private ContactAddress adressOfEmergencyContact;
 
-	//@NotNull
+	@Column(nullable = false)
 	private String relationshipToEmergencyContact;
 
-	//@NotNull
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private BloodGroup bloodgroup;
 
-	//@NotNull
+	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Genotype Genotype;
 
