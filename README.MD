@@ -21,3 +21,5 @@ then click connect.
 you can click on the table name then click run to run the select query.
 
 NB: Clear before you run another query
+
+All bugs are fixed
