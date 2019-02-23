@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -37,7 +38,8 @@ public abstract class Patient extends AuditModel {
 
 	@Column(nullable = false)
 	private String middleName;
-
+	
+	@NotEmpty(message = "Last Name cannot be empty")
 	@Column(nullable = false)
 	private String lastName;
 
@@ -45,6 +47,7 @@ public abstract class Patient extends AuditModel {
 	private int phoneNumber;
 
 	@Column(unique = true, nullable = false)
+	@Email
 	private String email;
 	
 	@Column(nullable = false)
@@ -52,7 +55,7 @@ public abstract class Patient extends AuditModel {
 	private Gender gender;
 
 	@Column(nullable = false)
-	//@NotEmpty(message = "Date of Birth cannot be empty")
+	@NotNull(message = "Date of Birth cannot be empty")
 	private LocalDate dateOfBirth;
 
 	@Column(nullable = false)

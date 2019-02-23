@@ -97,9 +97,12 @@ public class StaffPatient extends Patient {
 
 	@Override
 	public String toString() {
-		return "Staffs [staffNumber=" + staffNumber + ", staffType=" + staffType + ", staffCategory=" + staffCategory
-				+ ", rank=" + rank + ", officeBlock=" + officeBlock + "]";
+		return "StaffPatient [staffNumber=" + staffNumber + ", staffType=" + staffType + ", staffCategory="
+				+ staffCategory + ", rank=" + rank + ", officeBlock=" + officeBlock + ", toString()=" + super.toString()
+				+ "]";
 	}
+
+	
 	
 	
 

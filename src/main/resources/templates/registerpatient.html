@@ -23,25 +23,25 @@
 		  
 		   <div class="card-header">Register a Patient</div>
         <div class="card-body">
-          <form th:attrappend="action=${student == true}?@{/createStudentPatient}:@{/createStaffPatient}">
+          <form th:attrappend="action=${student == true}?@{/createStudentPatient}:@{/createStaffPatient},object=${student == true}?${studentPatient}:${staffPatient}" th:object="${studentPatient}">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-4">
                   <div class="form-label-group">
-                    <input type="text" id="lastName" class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
+                    <input type="text" id="lastName" th:field="*{lastName}" class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
                     <label for="lastName">Last name</label>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-label-group">
-                    <input type="text" id="firstName" class="form-control" placeholder="First name" required="required">
+                    <input type="text" id="firstName" th:field="*{firstName}" class="form-control" placeholder="First name" required="required">
                     <label for="firstName">First name</label>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-label-group">
-                    <input type="text" id="middleName" class="form-control" placeholder="Middle name" required="required">
+                    <input type="text" id="middleName" th:field="*{middleName}" class="form-control" placeholder="Middle name" required="required">
                     <label for="middleName">Middle name</label>
                   </div>
                 </div>
@@ -52,21 +52,21 @@
               <div class="form-row">
               <div class="col-md-4">
                   <div class="form-label-group">
-                      <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required">
+                      <input type="email" id="inputEmail" th:field="*{email}" class="form-control" placeholder="Email address" required="required">
                       <label for="inputEmail">Email address</label>
                   </div>
               </div>
 
               <div class="col-md-4">
                   <div class="form-label-group">
-                      <input type="text" id="inputPnum" class="form-control" placeholder="Phone Number" required="required">
+                      <input type="text" id="inputPnum" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number" required="required">
                       <label for="inputPnum">Phone Number</label>
                   </div>
               </div>
               
               <div class="col-md-4">
-                  <select class="form-control">
-                      <option selected disabled> Select Gender</option>
+                  <select class="form-control" th:field="*{gender}">
+                      <option value="" selected disabled> Select Gender</option>
                         <option th:each="gender : ${genders}"
                         th:text="${gender.gender}"
                         th:value="${gender}">1</option>
@@ -91,26 +91,26 @@
               <div class="form-row">
                 <div class="col-md-4">
                   <div class="form-label-group">
-                    <input type="date" id="dateOfBirth" class="form-control" placeholder="Date of Birth" required="required">
+                    <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" class="form-control" placeholder="Date of Birth" required="required">
                     <label for="dateOfBirth">Date of Birth</label>
                   </div>
                 </div>
                 <div class="col-md-4" th:if="${student==true}">
                   <div class="form-label-group">
-                    <input type="text" id="matric_number" class="form-control" placeholder="Matric Number" required="required">
+                    <input type="text" id="matric_number" th:field="*{matricNumber}" class="form-control" placeholder="Matric Number" required="required">
                     <label for="matric_number">Matric Number</label>
                   </div>
                 </div>
                 <div class="col-md-4" th:if="${staff==true}">
                     <div class="form-label-group">
-                      <input type="text" id="staffId" class="form-control" placeholder="Staff ID" required="required">
+                      <input type="text" id="staffId" th:field="*{staffNumber}"class="form-control" placeholder="Staff ID" required="required">
                       <label for="staffId">Staff ID</label>
                     </div>
                   </div>
 
                   <div class="col-md-4">
                     <div class="form-label-group">
-                      <input type="text" id="department" class="form-control" placeholder="Department" required="required">
+                      <input type="text" id="department" th:field="*{deparment}" class="form-control" placeholder="Department" required="required">
                       <label for="department">Department</label>
                     </div>
                   </div>
@@ -122,14 +122,14 @@
 
                   <div class="col-md-4"  th:if="${student==true}">
                     <div class="form-label-group">
-                      <input type="text" id="faculty" class="form-control" placeholder="faculty" required="required">
+                      <input type="text" id="faculty" th:field="*{faculty}" class="form-control" placeholder="faculty" required="required">
                       <label for="faculty">Faculty</label>
                     </div>
                   </div>
 
                   <div class="col-md-4"  th:if="${student==true}">
-                          <select class="form-control">
-                          <option selected disabled> Select Level</option>
+                          <select class="form-control" th:field="*{level}">
+                          <option value="" selected disabled> Select Level</option>
                             <option th:each="level : ${levels}"
                             th:text="${level.level}"
                             th:value="${level}"></option>
@@ -137,7 +137,7 @@
                     </div>
 
                     <div class="col-md-4"  th:if="${staff==true}">
-                        <select class="form-control">
+                        <select value="" class="form-control" th:field="*{staffCategory}">
                         <option selected disabled> Select Staff Type</option>
                           <option th:each="category : ${categories}"
                           th:text="${category.staffCategory}"
@@ -147,14 +147,14 @@
 
                   <div class="col-md-4"  th:if="${staff==true}">
                       <div class="form-label-group">
-                        <input type="text" id="rank" class="form-control" placeholder="rank" required="required">
+                        <input type="text" id="rank" th:field="*{rank}" class="form-control" placeholder="rank" required="required">
                         <label for="rank">Rank</label>
                       </div>
                     </div>
 
                     <div class="col-md-4">
-                        <select class="form-control">
-                            <option selected disabled> Select Marital Status</option>
+                        <select class="form-control" th:field="*{maritalStatus}">
+                            <option value="" selected disabled> Select Marital Status</option>
                               <option th:each="status : ${maritalStatus}"
                               th:text="${status.maritalStatus}"
                               th:value="${status}">1</option>
@@ -169,20 +169,20 @@
 
                     <div class="col-md-4">
                         <div class="form-label-group">
-                          <input type="text" id="state" class="form-control" placeholder="State of Origin" required="required">
+                          <input type="text" id="state" th:field="*{stateOfOrigin}" class="form-control" placeholder="State of Origin" required="required">
                           <label for="state">State of Origin</label>
                         </div>
                       </div>
 
                       <div class="col-md-4">
                           <div class="form-label-group">
-                            <input type="text" id="LGA" class="form-control" placeholder="Local Goverment Area of Origin" required="required">
+                            <input type="text" id="LGA" th:field="*{LGAOfOrigin}" class="form-control" placeholder="Local Goverment Area of Origin" required="required">
                             <label for="LGA">Local Goverment Area of Origin</label>
                           </div>
                         </div>
 
                         <div class="col-md-4"  th:if="${staff==true}">
-                            <select class="form-control">
+                            <select class="form-control" th:field="*{staffType}">
                             <option selected disabled> Select Staff Type</option>
                               <option th:each="type : ${types}"
                               th:text="${type.staffType}"
@@ -200,28 +200,28 @@
                 <div class="form-row">
                   <div class="col-md-2">
                     <div class="form-label-group">
-                        <input type="text" id="houseNumber" class="form-control" placeholder="House Number" required="required">
+                        <input type="text" id="houseNumber" th:field="*{houseNumber}" class="form-control" placeholder="House Number" required="required">
                         <label for="houseNumber">House Number</label>
                     </div>    
                   </div>
 
                   <div class="col-md-6">
                     <div class="form-label-group">
-                        <input type="text" id="streetName" class="form-control" placeholder="Street Name" required="required">
+                        <input type="text" id="streetName" th:field="*{streetName}" class="form-control" placeholder="Street Name" required="required">
                         <label for="streetName">Street Name</label>
                     </div>
                  </div>
 
                   <div class="col-md-2">
                     <div class="form-label-group">
-                        <input type="text" id="addressCity" class="form-control" placeholder="City" required="required">
+                        <input type="text" id="addressCity" th:field="*{addressCity}" class="form-control" placeholder="City" required="required">
                         <label for="addressCity">City</label>
                     </div>  
                   </div>
 
                   <div class="col-md-2">
                     <div class="form-label-group">
-                        <input type="text" id="addressState" class="form-control" placeholder="State" required="required">
+                        <input type="text" id="addressState" th:field="*{addressState}" class="form-control" placeholder="State" required="required">
                         <label for="addressState">State</label>
                     </div>
                   </div>
@@ -237,14 +237,14 @@
                 <div class="form-row">
                   <div class="col-md-6">
                       <div class="form-label-group">
-                          <input type="text" id="roomNumber" class="form-control" placeholder="Room Number" required="required">
+                          <input type="text" id="roomNumber" th:field="*{roomNumber}" class="form-control" placeholder="Room Number" required="required">
                           <label for="roomNumber">Room number</label>
                       </div>
                   </div>
 
                   <div class="col-md-6">
                       <div class="form-label-group">
-                          <input type="text" id="hallname" class="form-control" placeholder="Hall Name" required="required">
+                          <input type="text" id="hallname" th:field="*{hallName}" class="form-control" placeholder="Hall Name" required="required">
                           <label for="hallname">Hall Name</label>
                       </div>
                   </div>
@@ -259,7 +259,7 @@
                     <div class="form-row">
                       <div class="col-md-6">
                           <div class="form-label-group">
-                              <input type="text" id="officeBlock" class="form-control" placeholder="Office Block" required="required">
+                              <input type="text" id="officeBlock" th:field="*{officeBlock}" class="form-control" placeholder="Office Block" required="required">
                               <label for="officeBlock">Office Block</label>
                           </div>
                       </div>
@@ -272,28 +272,28 @@
                   <div class="form-row">
                     <div class="col-md-4">
                         <div class="form-label-group">
-                            <input type="text" id="contactName" class="form-control" placeholder="Contact Name" required="required">
+                            <input type="text" id="contactName" th:field="*{emergencyContact}" class="form-control" placeholder="Contact Name" required="required">
                             <label for="contactName">Contact Name</label>
                         </div>
                     </div>
   
                     <div class="col-md-3">
                         <div class="form-label-group">
-                            <input type="text" id="cPNum" class="form-control" placeholder="Contact Phone Number" required="required">
+                            <input type="text" id="cPNum" th:field="*{phoneNumberOfEmergencyContact}" class="form-control" placeholder="Contact Phone Number" required="required">
                             <label for="cPNum">Contact Phone Number</label>
                         </div>
                     </div>
 
                     <div class="col-md-3">
                         <div class="form-label-group">
-                            <input type="text" id="contactEmail" class="form-control" placeholder="Contact Email" required="required">
+                            <input type="text" id="contactEmail" th:field="*{}" class="form-control" placeholder="Contact Email">
                             <label for="contactEmail">Contact Email</label>
                         </div>
                     </div>
 
                     <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="rship2Contact" class="form-control" placeholder="Relationship" required="required">
+                            <input type="text" id="rship2Contact" th:field="*{relationshipToEmergencyContact}" class="form-control" placeholder="Relationship" required="required">
                             <label for="rship2Contact">Relationship</label>
                         </div>
                     </div>
@@ -304,28 +304,28 @@
                     <div class="form-row">
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="chouseNumber" class="form-control" placeholder="House Number" required="required">
+                            <input type="text" id="chouseNumber" th:field="*{contactHouseNumber}" class="form-control" placeholder="House Number" required="required">
                             <label for="chouseNumber">House Number</label>
                         </div>    
                       </div>
     
                       <div class="col-md-6">
                         <div class="form-label-group">
-                            <input type="text" id="cstreetName" class="form-control" placeholder="Street Name" required="required">
+                            <input type="text" id="cstreetName" th:field="*{contactStreetName}" class="form-control" placeholder="Street Name" required="required">
                             <label for="cstreetName">Street Name</label>
                         </div>
                      </div>
     
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="caddressCity" class="form-control" placeholder="City" required="required">
+                            <input type="text" id="caddressCity" th:field="*{contactAddressCity}" class="form-control" placeholder="City" required="required">
                             <label for="caddressCity">City</label>
                         </div>  
                       </div>
     
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="caddressState" class="form-control" placeholder="State" required="required">
+                            <input type="text" id="caddressState" th:field="*{contactAddressState}" class="form-control" placeholder="State" required="required">
                             <label for="caddressState">State</label>
                         </div>
                       </div>
@@ -339,7 +339,7 @@
                     <div class="form-row">
 
                         <div class="col-md-4">
-                            <select class="form-control">
+                            <select class="form-control" th:field="*{bloodgroup}">
                                 <option selected disabled> Select Blood Group</option>
                                   <option th:each="bg : ${bloodGroups}"
                                   th:text="${bg.bloodGroup}"
@@ -348,7 +348,7 @@
                         </div>
 
                         <div class="col-md-4">
-                            <select class="form-control">
+                            <select class="form-control" th:field="*{Genotype}">
                                 <option selected disabled> Select Genotype</option>
                                   <option th:each="genotype : ${genotypes}"
                                   th:text="${genotype.genotype}"
@@ -356,10 +356,10 @@
                                 </select>
                         </div>
                         <div class="col-md-2">
-                          <textarea class="form-control" name="" id="" cols="30" rows="10" placeholder="Allergies"></textarea>
+                          <textarea class="form-control" th:field="*{allergies}" name="" id="" cols="30" rows="10" placeholder="Allergies"></textarea>
                         </div>
                         <div class="col-md-2">
-                            <textarea class="form-control"  name="" id="" cols="30" rows="10" placeholder="Conditions"></textarea>
+                            <textarea class="form-control" th:field="*{medicalConditions}"  name="" id="" cols="30" rows="10" placeholder="Conditions"></textarea>
                           </div>
 
                     </div>

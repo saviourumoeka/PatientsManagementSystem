@@ -20,26 +20,26 @@ import com.novena.clinic.patientsManagementSystem.Entities.Enums.MaritalStatus;
 public class StudentPatient extends Patient {
 
 	@Column(unique = true, nullable = false)
-	//@NotEmpty(message = "Matric Number Cannot be Empty")
+	@NotEmpty(message = "Matric Number Cannot be Empty")
 	private String matricNumber;
 
-	//@NotEmpty(message = "Level cannot be empty")
+	
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
-	//@NotEmpty(message = "Level cannot be empty")
+	@NotNull(message = "Level cannot be empty")
 	private Level level;
 
 	@Column(nullable = false)
 	private String faculty;
 	
-	
 
+	@Embedded
+	private CampusAddress campusAddress;
+	
 	public StudentPatient() {
 	
 	}
 
-	@Embedded
-	private CampusAddress campusAddress;
 
 	public StudentPatient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, HomeAddress homeAdress,
