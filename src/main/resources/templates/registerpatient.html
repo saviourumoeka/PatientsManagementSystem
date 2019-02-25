@@ -23,7 +23,7 @@
 		  
 		   <div class="card-header">Register a Patient</div>
         <div class="card-body">
-          <form th:attrappend="action=${student == true}?@{/createStudentPatient}:@{/createStaffPatient},object=${student == true}?${studentPatient}:${staffPatient}" th:object="${studentPatient}">
+          <form th:attrappend="action=${student == true}?@{/createStudentPatient}:@{/createStaffPatient}" th:object="${object}" method="post">
             <div class="form-group">
               <div class="form-row">
                 <div class="col-md-4">
@@ -31,6 +31,7 @@
                     <input type="text" id="lastName" th:field="*{lastName}" class="form-control" placeholder="Last name" required="required" autofocus="autofocus">
                     <label for="lastName">Last name</label>
                   </div>
+                  <p th:if="${#fields.hasErrors('lastName')}"th:errors="*{lastName}" class="alert alert-danger"><br/></p>
                 </div>
                 <div class="col-md-4">
                   <div class="form-label-group">
@@ -59,7 +60,7 @@
 
               <div class="col-md-4">
                   <div class="form-label-group">
-                      <input type="text" id="inputPnum" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number" required="required">
+                      <input type="number" id="inputPnum" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number" required="required">
                       <label for="inputPnum">Phone Number</label>
                   </div>
               </div>
@@ -137,8 +138,8 @@
                     </div>
 
                     <div class="col-md-4"  th:if="${staff==true}">
-                        <select value="" class="form-control" th:field="*{staffCategory}">
-                        <option selected disabled> Select Staff Type</option>
+                        <select class="form-control" th:field="*{staffCategory}">
+                        <option value=""  selected disabled> Select Staff Type</option>
                           <option th:each="category : ${categories}"
                           th:text="${category.staffCategory}"
                           th:value="${category}"></option>
@@ -183,7 +184,7 @@
 
                         <div class="col-md-4"  th:if="${staff==true}">
                             <select class="form-control" th:field="*{staffType}">
-                            <option selected disabled> Select Staff Type</option>
+                            <option value=""  selected disabled> Select Staff Type</option>
                               <option th:each="type : ${types}"
                               th:text="${type.staffType}"
                               th:value="${type}"></option>
@@ -200,28 +201,28 @@
                 <div class="form-row">
                   <div class="col-md-2">
                     <div class="form-label-group">
-                        <input type="text" id="houseNumber" th:field="*{houseNumber}" class="form-control" placeholder="House Number" required="required">
+                        <input type="text" id="houseNumber" th:field="*{homeAdress.houseNumber}" class="form-control" placeholder="House Number" required="required">
                         <label for="houseNumber">House Number</label>
                     </div>    
                   </div>
 
                   <div class="col-md-6">
                     <div class="form-label-group">
-                        <input type="text" id="streetName" th:field="*{streetName}" class="form-control" placeholder="Street Name" required="required">
+                        <input type="text" id="streetName" th:field="*{homeAdress.streetName}" class="form-control" placeholder="Street Name" required="required">
                         <label for="streetName">Street Name</label>
                     </div>
                  </div>
 
                   <div class="col-md-2">
                     <div class="form-label-group">
-                        <input type="text" id="addressCity" th:field="*{addressCity}" class="form-control" placeholder="City" required="required">
+                        <input type="text" id="addressCity" th:field="*{homeAdress.addressCity}" class="form-control" placeholder="City" required="required">
                         <label for="addressCity">City</label>
                     </div>  
                   </div>
 
                   <div class="col-md-2">
                     <div class="form-label-group">
-                        <input type="text" id="addressState" th:field="*{addressState}" class="form-control" placeholder="State" required="required">
+                        <input type="text" id="addressState" th:field="*{homeAdress.addressState}" class="form-control" placeholder="State" required="required">
                         <label for="addressState">State</label>
                     </div>
                   </div>
@@ -237,14 +238,14 @@
                 <div class="form-row">
                   <div class="col-md-6">
                       <div class="form-label-group">
-                          <input type="text" id="roomNumber" th:field="*{roomNumber}" class="form-control" placeholder="Room Number" required="required">
+                          <input type="text" id="roomNumber" th:field="*{campusAddress.roomNumber}" class="form-control" placeholder="Room Number" required="required">
                           <label for="roomNumber">Room number</label>
                       </div>
                   </div>
 
                   <div class="col-md-6">
                       <div class="form-label-group">
-                          <input type="text" id="hallname" th:field="*{hallName}" class="form-control" placeholder="Hall Name" required="required">
+                          <input type="text" id="hallname" th:field="*{campusAddress.hallName}" class="form-control" placeholder="Hall Name" required="required">
                           <label for="hallname">Hall Name</label>
                       </div>
                   </div>
@@ -252,7 +253,7 @@
               </div>
 
               <!--Office Block-->
-              <div class="form-group"  th:if="${student==true}">
+              <div class="form-group"  th:if="${staff==true}">
                 
                   <hr>
                   <h5>Office Block</h5>
@@ -286,7 +287,7 @@
 
                     <div class="col-md-3">
                         <div class="form-label-group">
-                            <input type="text" id="contactEmail" th:field="*{}" class="form-control" placeholder="Contact Email">
+                            <input type="text" id="contactEmail" class="form-control" placeholder="Contact Email">
                             <label for="contactEmail">Contact Email</label>
                         </div>
                     </div>
@@ -304,28 +305,28 @@
                     <div class="form-row">
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="chouseNumber" th:field="*{contactHouseNumber}" class="form-control" placeholder="House Number" required="required">
+                            <input type="text" id="chouseNumber" th:field="*{adressOfEmergencyContact.contactHouseNumber}" class="form-control" placeholder="House Number" required="required">
                             <label for="chouseNumber">House Number</label>
                         </div>    
                       </div>
     
                       <div class="col-md-6">
                         <div class="form-label-group">
-                            <input type="text" id="cstreetName" th:field="*{contactStreetName}" class="form-control" placeholder="Street Name" required="required">
+                            <input type="text" id="cstreetName" th:field="*{adressOfEmergencyContact.contactStreetName}" class="form-control" placeholder="Street Name" required="required">
                             <label for="cstreetName">Street Name</label>
                         </div>
                      </div>
     
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="caddressCity" th:field="*{contactAddressCity}" class="form-control" placeholder="City" required="required">
+                            <input type="text" id="caddressCity" th:field="*{adressOfEmergencyContact.contactAddressCity}" class="form-control" placeholder="City" required="required">
                             <label for="caddressCity">City</label>
                         </div>  
                       </div>
     
                       <div class="col-md-2">
                         <div class="form-label-group">
-                            <input type="text" id="caddressState" th:field="*{contactAddressState}" class="form-control" placeholder="State" required="required">
+                            <input type="text" id="caddressState" th:field="*{adressOfEmergencyContact.contactAddressState}" class="form-control" placeholder="State" required="required">
                             <label for="caddressState">State</label>
                         </div>
                       </div>
@@ -340,7 +341,7 @@
 
                         <div class="col-md-4">
                             <select class="form-control" th:field="*{bloodgroup}">
-                                <option selected disabled> Select Blood Group</option>
+                                <option value="" selected disabled> Select Blood Group</option>
                                   <option th:each="bg : ${bloodGroups}"
                                   th:text="${bg.bloodGroup}"
                                   th:value="${bg}">1</option>
@@ -349,7 +350,7 @@
 
                         <div class="col-md-4">
                             <select class="form-control" th:field="*{Genotype}">
-                                <option selected disabled> Select Genotype</option>
+                                <option value="" selected disabled> Select Genotype</option>
                                   <option th:each="genotype : ${genotypes}"
                                   th:text="${genotype.genotype}"
                                   th:value="${genotype}">1</option>

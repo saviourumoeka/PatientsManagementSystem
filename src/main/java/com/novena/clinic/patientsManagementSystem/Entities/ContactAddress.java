@@ -17,66 +17,58 @@ public class ContactAddress {
 	
 	@Column(nullable = false)
 	private String contactAddressState;
-	
-	
 
 	public ContactAddress() {
 	}
 
-	public ContactAddress(int streetNumber, String streetName, String addressCity, String addressState) {
-		this.contactHouseNumber = streetNumber;
-		this.contactStreetName = streetName;
-		this.contactAddressCity = addressCity;
-		this.contactAddressState = addressState;
+	public ContactAddress(int contactHouseNumber, String contactStreetName, String contactAddressCity,
+			String contactAddressState) {
+		this.contactHouseNumber = contactHouseNumber;
+		this.contactStreetName = contactStreetName;
+		this.contactAddressCity = contactAddressCity;
+		this.contactAddressState = contactAddressState;
 	}
 
-	public int getHouseNumber() {
+	public int getContactHouseNumber() {
 		return contactHouseNumber;
 	}
 
-	public void setHouseNumber(int streetNumber) {
-		this.contactHouseNumber = streetNumber;
+	public void setContactHouseNumber(int contactHouseNumber) {
+		this.contactHouseNumber = contactHouseNumber;
 	}
 
-	public String getStreetName() {
+	public String getContactStreetName() {
 		return contactStreetName;
 	}
 
-	public void setStreetName(String streetName) {
-		this.contactStreetName = streetName;
+	public void setContactStreetName(String contactStreetName) {
+		this.contactStreetName = contactStreetName;
 	}
 
-	public String getAddressCity() {
+	public String getContactAddressCity() {
 		return contactAddressCity;
 	}
 
-	public void setAddressCity(String addressCity) {
-		this.contactAddressCity = addressCity;
+	public void setContactAddressCity(String contactAddressCity) {
+		this.contactAddressCity = contactAddressCity;
 	}
 
-	public String getAddressState() {
+	public String getContactAddressState() {
 		return contactAddressState;
 	}
 
-	public void setAddressState(String addressState) {
-		this.contactAddressState = addressState;
+	public void setContactAddressState(String contactAddressState) {
+		this.contactAddressState = contactAddressState;
 	}
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("HomeAddress [streetNumber=");
-		builder.append(contactHouseNumber);
-		builder.append(", streetName=");
-		builder.append(contactStreetName);
-		builder.append(", addressCity=");
-		builder.append(contactAddressCity);
-		builder.append(", addressState=");
-		builder.append(contactAddressState);
-		builder.append("]");
-		return builder.toString();
+		return "ContactAddress [contactHouseNumber=" + contactHouseNumber + ", contactStreetName=" + contactStreetName
+				+ ", contactAddressCity=" + contactAddressCity + ", contactAddressState=" + contactAddressState
+				+ "]";
 	}
-
+	
+	
 
 	
 	

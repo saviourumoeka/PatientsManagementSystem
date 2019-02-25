@@ -37,7 +37,7 @@ public class StaffPatient extends Patient {
 		super();
 	}
 
-	public StaffPatient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
+	public StaffPatient(String firstName, String middleName, String lastName, String phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, String deparment, HomeAddress homeAdress,
 			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
 			ContactAddress adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,

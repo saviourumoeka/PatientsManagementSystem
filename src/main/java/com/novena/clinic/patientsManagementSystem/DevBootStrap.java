@@ -53,10 +53,10 @@ public class DevBootStrap implements ApplicationListener<ContextRefreshedEvent> 
 		homeAdress.setAddressState("C state");
 		
 		ContactAddress contact = new ContactAddress();
-		contact.setHouseNumber(001);
-		contact.setStreetName("No Where");
-		contact.setAddressCity("C city");
-		contact.setAddressState("C state");
+		contact.setContactHouseNumber(001);
+		contact.setContactStreetName("No Where");
+		contact.setContactAddressCity("C city");
+		contact.setContactAddressState("C state");
 		
 		StudentPatient one = new StudentPatient();
 		one.setFirstName("John");
@@ -78,8 +78,8 @@ public class DevBootStrap implements ApplicationListener<ContextRefreshedEvent> 
 		one.setHomeAdress(homeAdress);
 		one.setLGAOfOrigin("LGA");
 		one.setMaritalStatus(MaritalStatus.SINGLE);
-		one.setPhoneNumber(9);
-		one.setPhoneNumberOfEmergencyContact("8");
+		one.setPhoneNumber("12345678901");
+		one.setPhoneNumberOfEmergencyContact("12345678902");
 		one.setRelationshipToEmergencyContact("Nigga");
 		one.setStateOfOrigin("C State");
 	

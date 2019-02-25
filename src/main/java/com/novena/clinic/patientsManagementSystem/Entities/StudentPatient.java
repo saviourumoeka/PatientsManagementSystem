@@ -41,7 +41,7 @@ public class StudentPatient extends Patient {
 	}
 
 
-	public StudentPatient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
+	public StudentPatient(String firstName, String middleName, String lastName, String phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, HomeAddress homeAdress,
 			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
 			ContactAddress adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,

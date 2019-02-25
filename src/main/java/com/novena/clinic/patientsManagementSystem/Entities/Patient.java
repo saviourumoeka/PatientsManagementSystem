@@ -19,6 +19,9 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.BloodGroup;
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.Gender;
@@ -34,17 +37,20 @@ public abstract class Patient extends AuditModel {
 	private Integer id;
 	
 	@Column(nullable = false)
+	@Pattern(regexp="^([a-zA-Z]{2,})$", message="Name must be more than 2 letter and must not contain number")
 	private String firstName;
 
 	@Column(nullable = false)
+	@Pattern(regexp="^([a-zA-Z]{2,})$", message="Name must be more than 2 letter and must not contain number")
 	private String middleName;
 	
-	@NotEmpty(message = "Last Name cannot be empty")
 	@Column(nullable = false)
+	@Pattern(regexp="^([a-zA-Z]{2,})$", message="Name must be more than 2 letter and must not contain number")
 	private String lastName;
 
 	@Column(unique = true, nullable = false)
-	private int phoneNumber;
+	@Pattern(regexp="^([0-9]{11,11})$", message="Invalid Phone Number")
+	private String phoneNumber;
 
 	@Column(unique = true, nullable = false)
 	@Email
@@ -56,6 +62,7 @@ public abstract class Patient extends AuditModel {
 
 	@Column(nullable = false)
 	@NotNull(message = "Date of Birth cannot be empty")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dateOfBirth;
 
 	@Column(nullable = false)
@@ -63,6 +70,7 @@ public abstract class Patient extends AuditModel {
 	@Enumerated(EnumType.STRING)
 	private MaritalStatus maritalStatus;
 
+	@Pattern(regexp="^([a-zA-Z\t]{2,})$", message="Must be more than 2 letter and must not contain number")
 	private String deparment;
 
 	
@@ -70,21 +78,25 @@ public abstract class Patient extends AuditModel {
 	private HomeAddress homeAdress;
 
 	@Column(nullable = false)
+	@Pattern(regexp="^([a-zA-Z\\s]{2,})$", message="Must be more than 2 letter and must not contain number")
 	private String stateOfOrigin;
 
 	@Column(nullable = false)
+	@Pattern(regexp="^([a-zA-Z\t]{2,})$", message="Must be more than 2 letter and must not contain number")
 	private String LGAOfOrigin;
 
 	@Column(nullable = false)
 	private String emergencyContact;
 
 	@Column(nullable = false)
+	@Pattern(regexp="^([0-9]{11,11})$", message="Invalid Phone Number")
 	private String phoneNumberOfEmergencyContact;
 
-	@Column(nullable = false)
+	@Embedded
 	private ContactAddress adressOfEmergencyContact;
 
 	@Column(nullable = false)
+	@Pattern(regexp="^([a-zA-Z]{2,})$", message="Must be more than 2 letter and must not contain number")
 	private String relationshipToEmergencyContact;
 
 	@Column(nullable = false)
@@ -109,7 +121,7 @@ public abstract class Patient extends AuditModel {
 	public Patient() {
 	}
 
-	public Patient(String firstName, String middleName, String lastName, int phoneNumber, String email, Gender gender,
+	public Patient(String firstName, String middleName, String lastName, String phoneNumber, String email, Gender gender,
 			LocalDate dateOfBirth, MaritalStatus maritalStatus, String deparment, HomeAddress homeAdress,
 			String stateOfOrigin, String lGAOfOrigin, String emergencyContact, String phoneNumberOfEmergencyContact,
 			ContactAddress adressOfEmergencyContact, String relationshipToEmergencyContact, BloodGroup bloodgroup,
@@ -168,11 +180,11 @@ public abstract class Patient extends AuditModel {
 		this.lastName = lastName;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

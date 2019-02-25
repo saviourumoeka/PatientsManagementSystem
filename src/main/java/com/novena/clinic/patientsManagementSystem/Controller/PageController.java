@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.novena.clinic.patientsManagementSystem.Entities.HomeAddress;
 import com.novena.clinic.patientsManagementSystem.Entities.StaffPatient;
 import com.novena.clinic.patientsManagementSystem.Entities.StudentPatient;
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.BloodGroup;
@@ -50,7 +51,7 @@ public class PageController {
 		model.addAttribute("student", true);
 		model.addAttribute("link", "registerStaff");
 		model.addAttribute("forType", "Staff");
-		formModel.addAttribute("studentPatient",new StudentPatient());
+		formModel.addAttribute("object",new StudentPatient());
 		return "registerpatient";
 	}
 	
@@ -64,7 +65,11 @@ public class PageController {
 		model.addAttribute("staff", true);
 		model.addAttribute("link", "registerPatient");
 		model.addAttribute("forType", "Student");
-		formModel.addAttribute("staffPatient", new StaffPatient()); 
+		model.addAttribute("bloodGroups", BloodGroup.values());
+		model.addAttribute("maritalStatus", MaritalStatus.values());
+		model.addAttribute("genders", Gender.values());
+		model.addAttribute("genotypes", Genotype.values());
+		formModel.addAttribute("object", new StaffPatient()); 
 		return"registerpatient";
 	}
 }
