@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +22,10 @@ public class PatientsController {
 	
 	@RequestMapping(value="/createStudentPatient", method=RequestMethod.POST)
 	public String addStudentPatient(
-			@ModelAttribute("object") @Valid StudentPatient patient,BindingResult errors) {
+			@ModelAttribute("object") @Valid StudentPatient patient,BindingResult errors,ModelMap model) {
 		System.out.println("Patient Gotten "+ patient);
-		 if(errors.hasErrors()){	 
+		 if(errors.hasErrors()){	
+			 CommonModels.studentModel(model);
 			 return "registerpatient";
 		 }
 		patientServ.addPatient(patient);
@@ -32,8 +34,9 @@ public class PatientsController {
 
 	@RequestMapping(value="/createStaffPatient", method=RequestMethod.POST)
 	public String addStaffPatient(
-			@ModelAttribute("object") @Valid StaffPatient patient,BindingResult errors) {
+			@ModelAttribute("object") @Valid StaffPatient patient,BindingResult errors,ModelMap model) {
 		if(errors.hasErrors()){
+			CommonModels.staffModel(model);
 	         return"registerpatient";
 	         }
 		patientServ.addPatient(patient);

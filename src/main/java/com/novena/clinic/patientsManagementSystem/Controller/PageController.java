@@ -40,35 +40,14 @@ public class PageController {
 	@RequestMapping("/registerPatient")
 	public String registerPatient(ModelMap model,Model formModel) {
 		
-		model.addAttribute("breadcrumb", "Register");
-		model.addAttribute("breadcrumbItem", "Register Student");
-		model.addAttribute("pageTitle", "Register Patient");
-		model.addAttribute("genders", Gender.values());
-		model.addAttribute("levels",Level.values());
-		model.addAttribute("maritalStatus", MaritalStatus.values());
-		model.addAttribute("bloodGroups", BloodGroup.values());
-		model.addAttribute("genotypes", Genotype.values());
-		model.addAttribute("student", true);
-		model.addAttribute("link", "registerStaff");
-		model.addAttribute("forType", "Staff");
-		formModel.addAttribute("object",new StudentPatient());
+	CommonModels.studentModel(model);
+	formModel.addAttribute("object",new StudentPatient());
 		return "registerpatient";
 	}
 	
 	@RequestMapping("/registerStaff")
 	public String registerStaff(ModelMap model,Model formModel) {
-		model.addAttribute("pageTitle", "Register Patient");
-		model.addAttribute("breadcrumb", "Register");
-		model.addAttribute("breadcrumbItem", "Register Staff");
-		model.addAttribute("types", StaffType.values());
-		model.addAttribute("categories", StaffCategory.values());
-		model.addAttribute("staff", true);
-		model.addAttribute("link", "registerPatient");
-		model.addAttribute("forType", "Student");
-		model.addAttribute("bloodGroups", BloodGroup.values());
-		model.addAttribute("maritalStatus", MaritalStatus.values());
-		model.addAttribute("genders", Gender.values());
-		model.addAttribute("genotypes", Genotype.values());
+		CommonModels.staffModel(model);
 		formModel.addAttribute("object", new StaffPatient()); 
 		return"registerpatient";
 	}
