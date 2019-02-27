@@ -56,6 +56,7 @@ public abstract class Patient extends AuditModel {
 	@Email
 	private String email;
 	
+	@NotNull(message="Gender Can not be Empty")
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Gender gender;

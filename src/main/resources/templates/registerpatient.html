@@ -38,6 +38,7 @@
                     <input type="text" id="firstName" th:field="*{firstName}" class="form-control" placeholder="First name" required="required">
                     <label for="firstName">First name</label>
                   </div>
+                  <p th:if="${#fields.hasErrors('firstName')}"th:errors="*{firstName}" class="alert alert-danger"><br/></p>
                 </div>
 
                 <div class="col-md-4">
@@ -45,6 +46,7 @@
                     <input type="text" id="middleName" th:field="*{middleName}" class="form-control" placeholder="Middle name" required="required">
                     <label for="middleName">Middle name</label>
                   </div>
+                   <p th:if="${#fields.hasErrors('middleName')}"th:errors="*{middleName}" class="alert alert-danger"><br/></p>
                 </div>
 
               </div>
@@ -56,6 +58,7 @@
                       <input type="email" id="inputEmail" th:field="*{email}" class="form-control" placeholder="Email address" required="required">
                       <label for="inputEmail">Email address</label>
                   </div>
+                  <p th:if="${#fields.hasErrors('email')}"th:errors="*{email}" class="alert alert-danger"><br/></p>
               </div>
 
               <div class="col-md-4">
@@ -63,6 +66,7 @@
                       <input type="text" id="inputPnum" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number" required="required">
                       <label for="inputPnum">Phone Number</label>
                   </div>
+                  <p th:if="${#fields.hasErrors('phoneNumber')}"th:errors="*{phoneNumber}" class="alert alert-danger"><br/></p>
               </div>
               
               <div class="col-md-4">
@@ -72,18 +76,10 @@
                         th:text="${gender.gender}"
                         th:value="${gender}">1</option>
                       </select>
+                      <p th:if="${#fields.hasErrors('gender')}"th:errors="*{gender}" class="alert alert-danger"><br/></p>
           </div>
 
          
-				
-				<!-- <div class="col-md-2">
-				<div class="form-check">
-				  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-				  <label class="form-check-label" for="exampleRadios2">
-				    Second default radio
-				  </label>
-				</div>
-				</div> -->
 				
               </div> <!-- End of First Row -->
             </div>
@@ -95,6 +91,7 @@
                     <input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" class="form-control" placeholder="Date of Birth" required="required">
                     <label for="dateOfBirth">Date of Birth</label>
                   </div>
+                  <p th:if="${#fields.hasErrors('dateOfBirth')}"th:errors="*{dateOfBirth}" class="alert alert-danger"><br/></p>
                 </div>
                 <div class="col-md-4" th:if="${student==true}">
                   <div class="form-label-group">
