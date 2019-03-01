@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/frontpage :: header"/>
+<body id="page-top">
+
+	<nav th:replace="common/frontpage :: navbar" />
+	
+	<div id="wrapper">
+	
+			<!-- Side Bar -->
+			<ul th:replace="common/frontpage :: sidebar"/>
+			
+		 <div id="content-wrapper">
+		 
+		  <div class="container-fluid">
+		  	<div th:replace="common/frontpage :: mini-nav"/>
+		  
+		  <!-- CONTENT GOES HERE -->
+		  
+		  <h1 class="text-center">Patient Details Page</h1>
+		  
+		  <p th:text="${patientObj.lastName}"></p>
+		  
+		  </div>
+		 
+		 	<footer th:replace="common/frontpage :: footer"/>
+		 </div><!-- content-wrapper -->
+	
+	</div><!-- wrapper -->
+	
+	<!-- Stroll to top button -->
+	<a th:replace="common/frontpage :: top-button"/>
+	
+	<!-- logout modal -->
+	<div th:replace="common/frontpage :: logout-modal"/>
+	
+<div th:replace="common/frontpage :: scripts"/>
+</body>
+</html>

@@ -19,6 +19,7 @@ import com.novena.clinic.patientsManagementSystem.Entities.Enums.StaffCategory;
 import com.novena.clinic.patientsManagementSystem.Entities.Enums.StaffType;
 
 import javassist.expr.NewArray;
+import net.bytebuddy.asm.Advice.Return;
 
 @Controller
 public class PageController {
@@ -50,5 +51,13 @@ public class PageController {
 		CommonModels.staffModel(model);
 		formModel.addAttribute("object", new StaffPatient()); 
 		return"registerpatient";
+	}
+	
+	//@RequestMapping("/patientdetails")
+	public String patientDetails(ModelMap model) {
+		model.addAttribute("breadcrumb", "Patients");
+		model.addAttribute("breadcrumbItem", "Patient Information");
+		model.addAttribute("pageTitle", "Patient Detail");
+	return "patientDetails";
 	}
 }

@@ -1,5 +1,7 @@
 package com.novena.clinic.patientsManagementSystem.Controller;
 
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.novena.clinic.patientsManagementSystem.Entities.Patient;
 import com.novena.clinic.patientsManagementSystem.Entities.StaffPatient;
 import com.novena.clinic.patientsManagementSystem.Entities.StudentPatient;
 import com.novena.clinic.patientsManagementSystem.Service.ServiceImpl.PatientServiceImpl;
@@ -30,6 +33,16 @@ public class PatientsController {
 		 }
 		patientServ.addPatient(patient);
 		return "redirect:/";
+	}
+	
+	@RequestMapping("/patientdetails")
+	public String viewPatient(ModelMap model) {
+		Optional<Patient> patient = patientServ.findPatient(1);
+		model.addAttribute("breadcrumb", "Patients");
+		model.addAttribute("breadcrumbItem", "Patient Information");
+		model.addAttribute("pageTitle", "Patient Detail");
+		model.addAttribute("patientObj", patient.get() );
+		return"patientDetails";
 	}
 
 	@RequestMapping(value="/createStaffPatient", method=RequestMethod.POST)
